@@ -12,7 +12,11 @@ export class CustomerService {
   ) {}
 
   findAll(): Promise<Customer[]> {
-    return this.customerRepository.find();
+    return this.customerRepository.find({
+      order: {
+        no: 'ASC', // Sort customers by 'no' ascending
+      },
+    });
   }
 
   findOne(id: number): Promise<Customer> {
